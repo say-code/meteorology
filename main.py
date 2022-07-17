@@ -14,3 +14,5 @@ def data_insert_service():
     service = dao.data.data().insert(data)
 
 @app.route("/sql/data/select")
+def data_select_service():
+    return None
