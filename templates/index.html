@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <p>来源设备id：{{data[0]}}</p>
+    <p>来源设备数据产生时间：{{data[1]}}</p>
+    <p>数据最后更新时间：{{data[14]}}</p>
+    <p>电子鼻实时数据显示</p>
+    <ul>
+        <li>ou:{{data[2]}}</li>
+        <li>no2:{{data[3]}}</li>
+        <li>h2s:{{data[4]}}</li>
+        <li>nh3:{{data[5]}}</li>
+        <li>pid:{{data[6]}}</li>
+        <li>co:{{data[7]}}</li>
+        <li>so2:{{data[8]}}</li>
+    </ul>
+     <p>天气实时数据显示</p>
+    <ul>
+        <li>temperature:{{data[9]}}</li>
+        <li>humidity:{{data[10]}}</li>
+        <li>windSpeed:{{data[11]}}</li>
+        <li>windDirection:{{data[12]}}</li>
+        <li>airPressure:{{data[13]}}</li>
+    </ul>
+
+    <p>串口参数调整</p>
+    <form method="post" action="/sql/serial_set/update">
+        波特率：<input value="{{serial[0]}}" name="baud_rate">
+        数据字长：<input value="{{serial[1]}}" name="data_length">
+        校验方式：<input value="{{serial[2]}}" name="verification_mode">
+        停止位：<input value="{{serial[3]}}" name="stop_bit">
+        命令时间间隔（ms）：<input value="{{serial[4]}}" name="time_span">
+        字节流方式：<input value="{{serial[5]}}" name="byte_stream_mode">
+        服务器上传地址:<input value="{{serial[6]}}" name="ip_addr">
+        服务器上传间隔（s）：<input value="{{serial[7]}}" name="up_time">
+        <button type="submit">提交</button>
+    </form>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import util.link_mysql
-
+import datetime
 
 class data:
     db = util.link_mysql.link()
@@ -7,7 +7,12 @@ class data:
     def selectAll(self):
         sql = "SELECT * FROM data"
         self.db.execute(sql)
-        return self.db.get_execute()
+        data = list( self.db.get_execute()[0])
+        data[1] = data[1].strftime('%Y-%m-%d %H:%M:%S')
+        data[-2] = data[-2].strftime('%Y-%m-%d %H:%M:%S')
+        if data[-1] is not None:
+            data[-1] = data[-1].strftime('%Y-%m-%d %H:%M:%S')
+        return data
 
     def insert(self, data):
         sql = "insert into data values ({},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(data[0], data[1], data[2],
@@ -18,3 +23,4 @@ class data:
         self.db.execute(sql)
 
 
+data().selectAll()
